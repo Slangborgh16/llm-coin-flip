@@ -8,13 +8,13 @@ load_dotenv()
 client = OpenAI()
 
 
-def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5) -> str:
+def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5, prompt: str='Flip a coin') -> str:
     api_response = client.chat.completions.create(
         model=model,
         temperature=temperature,
         messages = [
             {'role' : 'system', 'content' : 'Reply with 1 word: heads or tails'},
-            {'role' : 'user', 'content' : 'Flip a coin'}
+            {'role' : 'user', 'content' : prompt}
         ]
     )
 
