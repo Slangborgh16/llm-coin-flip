@@ -9,7 +9,7 @@ client = OpenAI()
 
 
 def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5) -> str:
-    response = client.chat.completions.create(
+    api_response = client.chat.completions.create(
         model=model,
         temperature=temperature,
         messages = [
@@ -18,7 +18,17 @@ def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5) -> str:
         ]
     )
 
-    return response.choices[0].message.content
+    completion_response: str = api_response.choices[0].message.content
+    letter_cap: int = 5 if len(completion_response) >= 5 else len(completion_response)
+    completion_response: str = completion_response[:letter_cap].lower()
+    
+    # Sometimes GPT likes to say "head" and "tail" instead of "heads" and "tails"
+    if 'head' in completion_response:
+        return 'heads'
+    elif 'tail' in completion_response:
+        return 'tails'
+    else:
+        return None
 
 
 if __name__ == '__main__':
@@ -43,8 +53,18 @@ if __name__ == '__main__':
         for trial in range(1, trials + 1):
             print(f'Trial {trial}')
             result: str = flip_a_coin(model, temperature)
-            print(f'\t{result}')
-            time.sleep(5)
+
+            if result is not None:
+                print(f'\t{result}')
+            else:
+                print('Error: LLM output was neither heads nor tails.')
+
+            if trial != trials:
+                time.sleep(5)
     else:
         result: str = flip_a_coin(model, temperature)
-        print(result)
+
+        if result is not None:
+            print(result)
+        else:
+            print('Error: LLM output was neither heads nor tails.')
