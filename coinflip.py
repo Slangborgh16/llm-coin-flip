@@ -18,9 +18,14 @@ def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5, prompt: str=
         ]
     )
 
-    completion_response: str = api_response.choices[0].message.content
-    letter_cap: int = 5 if len(completion_response) >= 5 else len(completion_response)
-    completion_response: str = completion_response[:letter_cap].lower()
+    completion_response: str = api_response.choices[0].message.content.strip('.')
+    response_length: int = len(completion_response)
+
+    # If the response is longer than 5, the LLM gave bad output (len("heads") == 5)
+    if response_length > 5:
+        return None
+
+    completion_response: str = completion_response[:response_length].lower()
     
     # Sometimes GPT likes to say "head" and "tail" instead of "heads" and "tails"
     if 'head' in completion_response:
