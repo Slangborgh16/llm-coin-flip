@@ -14,6 +14,7 @@ This project uses **Python 3.11** and requires the following libraries:
 - [openai](https://github.com/openai/openai-python)
 - [dotenv](https://github.com/theskumar/python-dotenv)
 - [matplotlib](https://github.com/matplotlib/matplotlib)
+- [tiktoken](https://github.com/openai/tiktoken)
 
 Run the following command to install the dependencies.
 ```bash
