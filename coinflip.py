@@ -51,7 +51,6 @@ if __name__ == '__main__':
     trials: int = args.trials
     model: str = args.model
     temperature = args.temperature
-    show_plot: bool = args.plot
 
     if trials > 1:
         for trial in range(1, trials + 1):
