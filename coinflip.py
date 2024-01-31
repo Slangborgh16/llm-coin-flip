@@ -13,6 +13,7 @@ def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5, prompt: str=
         model=model,
         temperature=temperature,
         messages = [
+            # System message keeps GPT from rambling about how it can't physically flip a coin
             {'role' : 'system', 'content' : 'Reply with 1 word: heads or tails'},
             {'role' : 'user', 'content' : prompt}
         ]
@@ -25,7 +26,7 @@ def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5, prompt: str=
     if response_length > 5:
         return None
 
-    completion_response: str = completion_response[:response_length].lower()
+    completion_response = completion_response[:response_length].lower()
     
     # Sometimes GPT likes to say "head" and "tail" instead of "heads" and "tails"
     if 'head' in completion_response:
@@ -45,8 +46,6 @@ if __name__ == '__main__':
             help='GPT model to use. Default: gpt-3.5-turbo')
     parser.add_argument('-t', '--temperature', default=1.5, type=float, \
             help='LLM temperature. Default: 1.5')
-    parser.add_argument('-p', '--plot', action='store_true', \
-            help='Display a live-updating plot of the results for more than 1 trial.')
     args = parser.parse_args()
 
     trials: int = args.trials
