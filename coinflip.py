@@ -57,19 +57,21 @@ if __name__ == '__main__':
     if trials > 1:
         for trial in range(1, trials + 1):
             print(f'Trial {trial}: ', end='')
-            result: str = flip_a_coin(model, temperature)
+            result: str = None
 
-            if result is not None:
-                print(result)
-            else:
-                print('Error: LLM output was neither heads nor tails.')
+            # If the LLM produces bad output, continue to flip until we get either heads or tails
+            while result is None:
+                result = flip_a_coin(model, temperature)
+
+            print(result)
 
             if trial != trials:
                 time.sleep(1)
     else:
-        result: str = flip_a_coin(model, temperature)
+        result: str = None
 
-        if result is not None:
-            print(result)
-        else:
-            print('Error: LLM output was neither heads nor tails.')
+        # If the LLM produces bad output, continue to flip until we get either heads or tails
+        while result is None:
+            result = flip_a_coin(model, temperature)
+
+        print(result)
