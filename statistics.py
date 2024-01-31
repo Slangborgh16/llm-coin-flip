@@ -1,3 +1,4 @@
+import sys
 import argparse
 import tiktoken
 import matplotlib.pyplot as plt
@@ -35,4 +36,11 @@ if __name__ == '__main__':
     print('-' * 30)
     print('Input tokens:', token_estimate[0])
     print('Output tokens:', token_estimate[1])
-    print('\nCheck https://openai.com/pricing to estimate the cost based on the selected model')
+    print(f'\nCheck https://openai.com/pricing to estimate the price for {model}')
+    
+    run_trials: str = input(f'Are you sure you want to run {trials} trials with {model}? [y/N] ').lower()
+    if run_trials not in ('y', 'yes'):
+       print('Quitting')
+       sys.exit(0)
+
+    print('Running trials')
