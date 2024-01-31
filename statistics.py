@@ -1,7 +1,10 @@
 import sys
+import time
+import random
 import argparse
 import tiktoken
 import matplotlib.pyplot as plt
+
 from coinflip import flip_a_coin
 
 
@@ -15,6 +18,12 @@ def estimate_token_usage(trials: int, prompt: str, model: str) -> tuple[int, int
     input_tokens: int = trials * (system_tokens + prompt_tokens)
     output_tokens: int = trials * response_tokens
     return input_tokens, output_tokens
+
+
+# Placeholder function so I can run tests without calling the API
+# *args lets the function be a drop-in replacement for flip_a_coin()
+def test_flip(*args) -> str:
+    return random.choice(('heads', 'tails'))
 
 
 if __name__ == '__main__':
