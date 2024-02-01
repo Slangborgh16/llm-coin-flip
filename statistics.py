@@ -43,6 +43,15 @@ def test_flip(*args) -> str:
 
 
 def run_test(trials, prompt, model, temperature) -> None:
+    total_trials: int = 0
+    heads_count: int = 0
+    tails_count: int = 0
+    fail_count: int = 0
+
+    print(f'\nModel: {model}\tTemperature: {temperature}')
+    print(f'Prompt: "{prompt}"\tTrials: {trials}')
+    print('-' * 40)
+
     for trial in range(1, trials + 1):
         result: str = flip_a_coin(model, temperature, prompt)
 
@@ -90,15 +99,6 @@ def main() -> None:
     if warn and not confirm_run(trials, prompt, model):
        print('Quitting')
        sys.exit(0)
-
-    total_trials: int = 0
-    heads_count: int = 0
-    tails_count: int = 0
-    fail_count: int = 0
-
-    print(f'\nModel: {model}\tTemperature: {temperature}')
-    print(f'Prompt: "{prompt}"\tTrials: {trials}')
-    print('-' * 40)
 
     run_test(trials, prompt, model, temperature)
 
