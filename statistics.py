@@ -20,6 +20,22 @@ def estimate_token_usage(trials: int, prompt: str, model: str) -> tuple[int, int
     return input_tokens, output_tokens
 
 
+def confirm_run(trials, prompt, model) -> bool:
+    # token_estimate: tuple[int, int] = estimate_token_usage(trials, 'Flip a coin', model)
+    token_estimate: tuple[int, int] = estimate_token_usage(trials, prompt, model)
+    print('Estimated minimum token usage')
+    print('-' * 30)
+    print('Input tokens:', token_estimate[0])
+    print('Output tokens:', token_estimate[1])
+    print(f'\nCheck https://openai.com/pricing to estimate the price for {model}')
+    
+    run_trials: str = input(f'Are you sure you want to run {trials} trials with {model}? [y/N] ')
+    if run_trials.lower() not in ('y', 'yes'):
+        return False
+
+    return True
+
+
 # Placeholder function so I can run tests without calling the API
 # *args lets the function be a drop-in replacement for flip_a_coin()
 def test_flip(*args) -> str:
@@ -34,22 +50,45 @@ if __name__ == '__main__':
             help='GPT model to use. Default: gpt-3.5-turbo')
     parser.add_argument('-t', '--temperature', default=1.5, type=float, \
             help='LLM temperature. Default: 1.5')
+    parser.add_argument('-w', '--warn', action='store_true', \
+            help='Enable warning about token usage.')
     args = parser.parse_args()
 
     trials: int = args.trials
     model: str = args.model
-    temperature = args.temperature
+    temperature: float = args.temperature
+    warn: bool = args.warn
 
-    token_estimate: tuple[int, int] = estimate_token_usage(trials, 'Flip a coin', model)
-    print('Estimated minimum token usage')
-    print('-' * 30)
-    print('Input tokens:', token_estimate[0])
-    print('Output tokens:', token_estimate[1])
-    print(f'\nCheck https://openai.com/pricing to estimate the price for {model}')
-    
-    run_trials: str = input(f'Are you sure you want to run {trials} trials with {model}? [y/N] ').lower()
-    if run_trials not in ('y', 'yes'):
+    if warn and not confirm_run(trials, 'Flip a coin', model):
        print('Quitting')
        sys.exit(0)
 
-    print('Running trials')
+    total_trials: int = 0
+    heads_count: int = 0
+    tails_count: int = 0
+    fail_count: int = 0
+
+    print()
+
+    for trial in range(1, trials + 1):
+        result: str = test_flip()
+
+        while result is None:
+            total_trials += 1
+            fail_count += 1
+            result = test_flip()
+
+        total_trials += 1
+
+        if result == 'heads':
+            heads_count += 1
+        elif result == 'tails':
+            tails_count += 1
+
+        print(f'Trial: {trial}\tHeads: {heads_count}\tTails: {tails_count}', end='')
+
+        if trial != trials:
+            print('\r', end='')
+            time.sleep(1)
+
+    print(f'\nTotal trials (including fails): {total_trials}\tFailure rate: {float(fail_count / total_trials) * 100.0}%')

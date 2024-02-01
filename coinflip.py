@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     trials: int = args.trials
     model: str = args.model
-    temperature = args.temperature
+    temperature: float = args.temperature
 
     if trials > 1:
         for trial in range(1, trials + 1):
