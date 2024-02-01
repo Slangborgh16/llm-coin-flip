@@ -85,14 +85,14 @@ def main() -> None:
             help='GPT model to use. Default: gpt-3.5-turbo')
     parser.add_argument('-t', '--temperature', default=1.5, type=float, \
             help='LLM temperature. Default: 1.5')
-    parser.add_argument('-w', '--warn', action='store_true', \
-            help='Enable warning about token usage.')
+    parser.add_argument('-i', '--ignore', action='store_false', \
+            help='Ignore warning about token usage.')
     args = parser.parse_args()
 
     trials: int = args.trials
     model: str = args.model
     temperature: float = args.temperature
-    warn: bool = args.warn
+    warn: bool = args.ignore
 
     prompt: str = 'Flip a coin'
 
