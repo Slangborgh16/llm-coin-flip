@@ -24,10 +24,10 @@ def confirm_run(trials, prompt, model) -> bool:
     # token_estimate: tuple[int, int] = estimate_token_usage(trials, 'Flip a coin', model)
     token_estimate: tuple[int, int] = estimate_token_usage(trials, prompt, model)
     print('Estimated minimum token usage')
-    print('-' * 30)
     print('Input tokens:', token_estimate[0])
     print('Output tokens:', token_estimate[1])
     print(f'\nCheck https://openai.com/pricing to estimate the price for {model}')
+    print('-' * 70)
     
     run_trials: str = input(f'Are you sure you want to run {trials} trials with {model}? [y/N] ')
     if run_trials.lower() not in ('y', 'yes'):
@@ -59,7 +59,9 @@ if __name__ == '__main__':
     temperature: float = args.temperature
     warn: bool = args.warn
 
-    if warn and not confirm_run(trials, 'Flip a coin', model):
+    prompt: str = 'Flip a coin'
+
+    if warn and not confirm_run(trials, prompt, model):
        print('Quitting')
        sys.exit(0)
 
@@ -68,10 +70,12 @@ if __name__ == '__main__':
     tails_count: int = 0
     fail_count: int = 0
 
-    print()
+    print(f'\nModel: {model}\tTemperature: {temperature}')
+    print(f'Prompt: "{prompt}"\tTrials: {trials}')
+    print('-' * 40)
 
     for trial in range(1, trials + 1):
-        result: str = test_flip()
+        result: str = flip_a_coin(model, temperature, prompt)
 
         while result is None:
             total_trials += 1
@@ -91,4 +95,5 @@ if __name__ == '__main__':
             print('\r', end='')
             time.sleep(1)
 
-    print(f'\nTotal trials (including fails): {total_trials}\tFailure rate: {float(fail_count / total_trials) * 100.0}%')
+    print('\nTotal trials (including fails): {}\tFailure rate: {:.2f}%'.format(\
+            total_trials, float(fail_count / total_trials) * 100.0))
