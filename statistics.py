@@ -67,7 +67,7 @@ def run_test(trials, prompt, model, temperature) -> None:
         elif result == 'tails':
             tails_count += 1
 
-        print(f'Trial: {trial}\tHeads: {heads_count}\tTails: {tails_count}', end='')
+        print(f'Trial: {trial}\tHeads: {heads_count}\tTails: {tails_count}\tFailures: {fail_count}', end='')
 
         if trial != trials:
             print('\r', end='')
