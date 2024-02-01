@@ -1,3 +1,4 @@
+import os
 import sys
 import time
 import random
@@ -21,7 +22,6 @@ def estimate_token_usage(trials: int, prompt: str, model: str) -> tuple[int, int
 
 
 def confirm_run(trials, prompt, model) -> bool:
-    # token_estimate: tuple[int, int] = estimate_token_usage(trials, 'Flip a coin', model)
     token_estimate: tuple[int, int] = estimate_token_usage(trials, prompt, model)
     print('Estimated minimum token usage')
     print('Input tokens:', token_estimate[0])
@@ -42,7 +42,33 @@ def test_flip(*args) -> str:
     return random.choice(('heads', 'tails'))
 
 
-if __name__ == '__main__':
+def run_test(trials, prompt, model, temperature) -> None:
+    for trial in range(1, trials + 1):
+        result: str = flip_a_coin(model, temperature, prompt)
+
+        while result is None:
+            total_trials += 1
+            fail_count += 1
+            result = test_flip()
+
+        total_trials += 1
+
+        if result == 'heads':
+            heads_count += 1
+        elif result == 'tails':
+            tails_count += 1
+
+        print(f'Trial: {trial}\tHeads: {heads_count}\tTails: {tails_count}', end='')
+
+        if trial != trials:
+            print('\r', end='')
+            time.sleep(1)
+
+    print('\nTotal trials (including fails): {}\tFailure rate: {:.2f}%'.format(\
+            total_trials, float(fail_count / total_trials) * 100.0))
+
+
+def main() -> None:
     description: str = 'Estimate the probability of getting heads for a given prompt, temperature, and model'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('trials', type=int, help='Number of trials to run.')
@@ -74,26 +100,15 @@ if __name__ == '__main__':
     print(f'Prompt: "{prompt}"\tTrials: {trials}')
     print('-' * 40)
 
-    for trial in range(1, trials + 1):
-        result: str = flip_a_coin(model, temperature, prompt)
+    run_test(trials, prompt, model, temperature)
 
-        while result is None:
-            total_trials += 1
-            fail_count += 1
-            result = test_flip()
 
-        total_trials += 1
-
-        if result == 'heads':
-            heads_count += 1
-        elif result == 'tails':
-            tails_count += 1
-
-        print(f'Trial: {trial}\tHeads: {heads_count}\tTails: {tails_count}', end='')
-
-        if trial != trials:
-            print('\r', end='')
-            time.sleep(1)
-
-    print('\nTotal trials (including fails): {}\tFailure rate: {:.2f}%'.format(\
-            total_trials, float(fail_count / total_trials) * 100.0))
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('\nQuitting')
+        try:
+            sys.exit(130)
+        except SystemExit:
+            os._exit(130)
