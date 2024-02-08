@@ -1,0 +1,43 @@
+Model: gpt-3.5-turbo    Temperature: 1.5
+Prompt: "Flip a coin"   Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 636      Tails: 364
+Total trials (including fails): 1057    Failure rate: 5.39%
+
+
+Model: gpt-3.5-turbo    Temperature: 1.5
+Prompt: "Flip a random coin"    Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 662      Tails: 338
+Total trials (including fails): 1063    Failure rate: 5.93%
+
+
+Model: gpt-3.5-turbo    Temperature: 1.5
+Prompt: "Flip a weighted coin"  Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 752      Tails: 248
+Total trials (including fails): 1253    Failure rate: 20.19%
+
+
+
+
+
+Model: gpt-3.5-turbo    Temperature: 1.0
+Prompt: "Flip a coin"   Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 692      Tails: 308
+Total trials (including fails): 1004    Failure rate: 0.40%
+
+
+Model: gpt-3.5-turbo    Temperature: 1.0
+Prompt: "Flip a random coin"    Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 733      Tails: 267      Failures: 6
+Total trials (including fails): 1006    Failure rate: 0.60%
+
+
+Model: gpt-3.5-turbo    Temperature: 1.0
+Prompt: "Flip a weighted coin"  Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 923      Tails: 77       Failures: 43
+Total trials (including fails): 1043    Failure rate: 4.12%
