@@ -1,6 +1,7 @@
 # The Experiment
 In this experiment, I ran a series of trials to compare how different prompts and LLM temperatures affect the coin flips produced by `gpt-3.5-turbo`.
-All coin flips were independent of each other. In other words, GPT doesn't get to see the previous coin flip results.
+All coin flips were independent of each other.
+In other words, GPT doesn't get to see the previous coin flip results.
 I ran 1000 trials for each combination of prompt and temperature.
 
 The prompts were:
@@ -22,3 +23,5 @@ I've heard that there are ways to trick GPT into
  The percentage of trials that fail is shown as the "failure rate" once the program finishes.
 
  # Results
+
+ ![Bar graphs showing the heads vs. tails probability for each prompt/temperature](extras/matrix.png)
