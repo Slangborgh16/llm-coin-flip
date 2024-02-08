@@ -8,7 +8,7 @@ The prompts were:
 - `Flip a random coin`
 - `Flip a weighted coin`
 
-The `statistics.py` program is built around `coinflip.py`.
+The `experiment.py` program is built around `coinflip.py`.
 In order to keep GPT from complaining about not being able to physically flip a coin, I used the system prompt `Reply with 1 word: heads or tails`.
 
 Sometimes, however, GPT still outputs some random nonsense that has nothing to do with coin flipping, especially at higher temperatures.
@@ -20,3 +20,5 @@ I've heard that there are ways to trick GPT into
  so perhaps this is something similar.
  Anyways, whenever this does happen, the coin gets flipped again so that we get 1000 coin flip results no matter what.
  The percentage of trials that fail is shown as the "failure rate" once the program finishes.
+
+ # Results
