@@ -7,7 +7,10 @@ Would the LLM produce weighted results, or would there be a fairly equal probabi
 
 The program `coinflip.py` provides a command line interface to flip a coin once or multiple times in a row using OpenAI's GPT.
 
-In `experiment.py`, I provide a tool to measure the results of a large series of coin flips. This program also shows the "failure rate", or the percentage of times GPT produced a non heads or tails output. Different combinations of prompts, temperatures, and models can easily be run. To learn about  my findings, [click here](results.md). 
+In `experiment.py`, I provide a tool to measure the results of a large series of coin flips.
+This program also shows the "failure rate", or the percentage of times GPT produced a non heads or tails output.
+Different combinations of prompts, temperatures, and models can easily be run.
+To learn about  my findings, [click here](experiment.md). 
 
 # Setup
 ```bash
