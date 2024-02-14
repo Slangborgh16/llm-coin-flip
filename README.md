@@ -1,17 +1,24 @@
 # llm-coin-flip
 
 # About
-This project originiated when I thought of this question:
-*How random can an LLM be when asked to flip a coin?*
-Would the LLM produce weighted results, or would there be a fairly equal probability of getting heads or tails?
+*How random can an LLM be when asked to flip a coin?
+How would parameters such as prompt, temperature, and model affect these results?
+Would the LLM produce weighted results,
+or would there be a fairly equal probability of getting heads or tails?*
+This project aims to answer these questions by providing
+two command line tools powered by OpenAI's GPT.
 
-The program `coinflip.py` is a command line utility to flip a coin once or seversal times in a row using OpenAI's GPT.
+`coinflip.py` is the base program.
+It is a simple tool that provides the user with either 'heads' or 'tails' when run.
+It also supports flipping a coin multiple times in a row for convenience.
 
-In `experiment.py`, I provide a tool to measure the results of a large series of coin flips.
-This program also shows the "failure rate", or the percentage of times GPT produced a non heads or tails output.
-Different combinations of prompts, temperatures, and models can easily be run.
+The program `experiment.py` expands on the functionality of `coinflip.py`.
+It can run a large series of trials while tallying the number of heads and tails produced
+with a given model, temperature, and prompt.
+This tool also keeps track of the "failure rate",
+which is the percentage of times GPT produced a non heads or tails output.
 
->**For information about my findings or on running your own experiment, [click here](experiment.md).**
+>**For more information about `experiment.py` and my experiment findings, [click here](experiment.md).**
 
 # Setup
 ```bash
@@ -31,26 +38,30 @@ pip install -r requirements.txt
 ```
 
 ## OpenAI API Key
-You will need to have an OpenAI API key to use this project. Check out the [OpenAI Website](https://platform.openai.com/api-keys) to set one up. Next, follow one of the two methods below.
+You will need to have an OpenAI API key to use this project.
+Check out the [OpenAI Website](https://platform.openai.com/api-keys) to set one up.
+Next, follow one of the two methods below.
 
 ### Method 1: Project `.env` File
 Create a file in the project directory called `.env`.
 ```bash
 touch .env
 ```
-Using Vim (or your favorite text editor, I guess), add the following line to `.env`. Replace the placeholder text with your API secret key.
+Using Vim (or your favorite text editor, I guess), add the following line to `.env`.
+Replace the placeholder text with your API secret key.
 ```bash
 OPENAI_API_KEY=YOUR_SECRET_KEY_GOES_HERE
 ```
 
 ### Method 2: Set an Environment Variable
-In your `.bashrc` file or the equivalent for your system, add the following line. Replace the placeholder text with your API secret key.
+In your `.bashrc` file or the equivalent for your system, add the following line.
+Replace the placeholder text with your API secret key.
 ```bash
 export OPENAI_API_KEY="YOUR_SECRET_KEY_GOES_HERE"
 ```
 Then run `source ~/.bashrc`.
 
-# Running
+# Using `coinflip.py`
 
 ## Positional Arguments
 |**Argument**|**Description**|**Required**|
