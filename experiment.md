@@ -8,12 +8,12 @@ All coin flips were independent of each other.
 In other words, GPT doesn't get to see the results of previous coin flips.
 I ran 1000 trials for each combination of prompt and temperature.
 
-The prompts were:
+The prompts I used were:
 - `Flip a coin`
 - `Flip a random coin`
 - `Flip a weighted coin`
 
-GPT likes to complan about being unable to physically flip a coin.
+GPT likes to complain about being unable to physically flip a coin.
 I found that using the system prompt `Reply with 1 word: heads or tails` usually fixes this issue.
 This is the default system prompt of `coinflip.py`.
 
@@ -41,7 +41,7 @@ The percentage of failed trials is reported as the "failure rate" once the progr
 
 In all trials, the coin was weighted in favor of heads.
 For both temperatures tested, the prompt `Flip a coin` produced the least biased results,
-followed by `Flip a random coin` and then `Flip a weighted coin`.
+followed by `Flip a random coin` and finally `Flip a weighted coin`.
 A higher temperature seems to improve the randomness of the LLM output,
 but it also increases the failure rate. 
 Notably, the prompt `Flip a weighted coin` with a temperature of 1.5 had a failure rate of 20.19%.
@@ -51,12 +51,13 @@ This means that an additional 253 trials had to be run to make up for the unusab
 
 I find it interesting that asking GPT to flip a random coin makes the output even more biased.
 I'm not sure why this happens.
-When it comes to the high failure rates at high temperatures,
+When it comes to the increased failure rates at high temperatures,
 maybe an improved system prompt would reduce the failure rate at the expense of using more tokens.
 
 An expansion of this experiment would be to let GPT see its previous output.
-Would it try to balance the number of heads and tails it outputs?
-With a large number of trials, including all previous output would likely exceed the context window of the model.
+Would it try to balance the number of heads and tails it produces?
+With a large number of trials, including all previous output in a single API request would
+likely exceed the context window of the model.
 Perhaps a better idea would be to send only the N most recent outputs.
 The value of N could be a new parameter to play around with, too.
 
