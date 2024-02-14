@@ -51,15 +51,13 @@ This means that an additional 253 trials had to be run to make up for the unusab
 
 # Running Your Own Experiment
 
-The program `experiment.py` is an extension of `coinflip.py`.
-It provides extra functionality that is helpful for evaluating the LLM's coin flip performance.
 The installation and setup process is the same as for `coinflip.py`, and only needs to be done once.
 It can be found [here](README.md#setup).
 
 By default, the program tries to estimate the **minimum** number of tokens that will be used.
 This warning can be disabled with the `-i` or `--ignore` flag.
 Please note that these estimates are often way off due to repeat trials from failures,
-unexpected GPT output, and more.
+unexpected GPT output, etc.
 
 ## Positional Arguments
 |**Argument**|**Description**|**Required**|
