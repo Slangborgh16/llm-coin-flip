@@ -4,7 +4,6 @@ import time
 import random
 import argparse
 import tiktoken
-import matplotlib.pyplot as plt
 
 from coinflip import flip_a_coin
 
