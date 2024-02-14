@@ -20,7 +20,7 @@ def estimate_token_usage(trials: int, prompt: str, model: str) -> tuple[int, int
     return input_tokens, output_tokens
 
 
-def confirm_run(trials, prompt, model) -> bool:
+def confirm_run(trials: int, prompt: str, model: str) -> bool:
     token_estimate: tuple[int, int] = estimate_token_usage(trials, prompt, model)
     print('Estimated minimum token usage')
     print('Input tokens:', token_estimate[0])
@@ -35,13 +35,7 @@ def confirm_run(trials, prompt, model) -> bool:
     return True
 
 
-# Placeholder function so I can run tests without calling the API
-# *args lets the function be a drop-in replacement for flip_a_coin()
-def test_flip(*args) -> str:
-    return random.choice(('heads', 'tails'))
-
-
-def run_test(trials, prompt, model, temperature) -> None:
+def run_test(trials: int, prompt: str, model: str, temperature: float) -> None:
     total_trials: int = 0
     heads_count: int = 0
     tails_count: int = 0
