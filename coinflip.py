@@ -1,3 +1,5 @@
+import os
+import sys
 import time
 import argparse
 from openai import OpenAI
@@ -37,7 +39,7 @@ def flip_a_coin(model: str='gpt-3.5-turbo', temperature: float=1.5, prompt: str=
         return None
 
 
-if __name__ == '__main__':
+def main() -> None:
     description: str = 'A slightly overkill way to flip a coin using GPT'
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('trials', default=1, type=int, nargs='?', \
@@ -73,3 +75,14 @@ if __name__ == '__main__':
             result = flip_a_coin(model, temperature)
 
         print(result)
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        print('\nQuitting')
+        try:
+            sys.exit(130)
+        except SystemExit:
+            os._exit(130)
