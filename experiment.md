@@ -1,6 +1,7 @@
+# Experiment
+
 > To run your own experiment, please see [this section](#running-your-own-experiment).
 
-# Experiment
 In this experiment, I ran a series of coin flip trials using `gpt-3.5-turbo`.
 The goal was to compare how different prompts and temperatures affect the results of the LLM.
 All coin flips were independent of each other.
