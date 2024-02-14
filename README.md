@@ -10,7 +10,8 @@ The program `coinflip.py` is a command line utility to flip a coin once or sever
 In `experiment.py`, I provide a tool to measure the results of a large series of coin flips.
 This program also shows the "failure rate", or the percentage of times GPT produced a non heads or tails output.
 Different combinations of prompts, temperatures, and models can easily be run.
-To learn about my findings or run your own experiment, [click here](experiment.md). 
+
+>**For information about my findings or on running your own experiment, [click here](experiment.md).**
 
 # Setup
 ```bash
