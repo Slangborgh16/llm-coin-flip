@@ -18,7 +18,7 @@ However, GPT sometimes outputs random nonsense anyway, especially at higher temp
 When this happens, the coin gets flipped again so that we get the desired number of trials.
 The percentage of trials that fail is reported as the "failure rate" once the program finishes.
 
-![Broken GPT output example](extras/nonsense_output.png)
+<img src="extras/nonsense_output.png" alt="Broken GPT output example" width="50%">
 
  # Results
 
