@@ -1,11 +1,11 @@
 # llm-coin-flip
 
 # About
-This project came about due to this question I had one day:
+This project originiated when I thought of this question:
 *How random can an LLM be when asked to flip a coin?*
 Would the LLM produce weighted results, or would there be a fairly equal probability of getting heads or tails?
 
-The program `coinflip.py` provides a command line interface to flip a coin once or multiple times in a row using OpenAI's GPT.
+The program `coinflip.py` is a command line utility to flip a coin once or seversal times in a row using OpenAI's GPT.
 
 In `experiment.py`, I provide a tool to measure the results of a large series of coin flips.
 This program also shows the "failure rate", or the percentage of times GPT produced a non heads or tails output.
