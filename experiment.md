@@ -1,7 +1,8 @@
 # The Experiment
-In this experiment, I ran a series of trials to compare how different prompts and LLM temperatures affect the coin flips produced by `gpt-3.5-turbo`.
+In this experiment, I ran a series of coin flip trials using `gpt-3.5-turbo`.
+The goal was to compare how different prompts and temperatures affect the results of the LLM.
 All coin flips were independent of each other.
-In other words, GPT doesn't get to see the previous coin flip results.
+In other words, GPT doesn't get to see the results of previous coin flips.
 I ran 1000 trials for each combination of prompt and temperature.
 
 The prompts were:
@@ -9,18 +10,15 @@ The prompts were:
 - `Flip a random coin`
 - `Flip a weighted coin`
 
-The `experiment.py` program is built around `coinflip.py`.
-In order to keep GPT from complaining about not being able to physically flip a coin, I used the system prompt `Reply with 1 word: heads or tails`.
+In order to keep GPT from complaining about being unable to physically flip a coin,
+I found that using the system prompt `Reply with 1 word: heads or tails` usually fixes this.
+This is the default system prompt of `coinflip.py`.
 
-Sometimes, however, GPT still outputs some random nonsense that has nothing to do with coin flipping, especially at higher temperatures.
+However, GPT sometimes outputs random nonsense anyway, especially at higher temperatures (see image below).
+When this happens, the coin gets flipped again so that we get the desired number of trials.
+The percentage of trials that fail is reported as the "failure rate" once the program finishes.
 
 ![Broken GPT output example](extras/nonsense_output.png)
-
-I've heard that there are ways to trick GPT into
- [revealing training data](https://www.businessinsider.com/google-researchers-openai-chatgpt-to-reveal-its-training-data-study-2023-12),
- so perhaps this is something similar.
- Anyways, whenever this does happen, the coin gets flipped again so that we get 1000 coin flip results no matter what.
- The percentage of trials that fail is shown as the "failure rate" once the program finishes.
 
  # Results
 
