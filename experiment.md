@@ -28,7 +28,7 @@ The percentage of trials that fail is reported as the "failure rate" once the pr
 ![Bar graphs showing the heads vs. tails probability for each prompt/temperature](extras/matrix.png)
 
 |Prompt|Temperature|Heads|Tails|Failure Rate|
-|---|---|---|---|---|---|
+|---|:---:|:---:|:---:|:---:|
 |Flip a coin|1.0|692|308|0.40%|
 |Flip a random coin|1.0|733|267|0.60%|
 |Flip a weighted coin|1.0|923|77|4.12%|
