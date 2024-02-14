@@ -1,10 +1,11 @@
 # llm-coin-flip
 
 # About
-*How random can an LLM be when asked to flip a coin?
-How would parameters such as prompt, temperature, and model affect these results?
-Would the LLM produce weighted results,
-or would there be a fairly equal probability of getting heads or tails?*
+- *How random can an LLM be when asked to flip a coin?*
+- *How do parameters such as prompt, temperature, and model affect these results?*
+- *Would the LLM produce weighted results,
+or would there be a fairly even probability of getting heads or tails?*
+
 This project aims to answer these questions by providing
 two command line tools powered by OpenAI's GPT.
 
@@ -14,11 +15,11 @@ It also supports flipping a coin multiple times in a row for convenience.
 
 The program `experiment.py` expands on the functionality of `coinflip.py`.
 It can run a large series of trials while tallying the number of heads and tails produced
-with a given model, temperature, and prompt.
+by a given model, temperature, and prompt.
 This tool also keeps track of the "failure rate",
 which is the percentage of times GPT produced a non heads or tails output.
 
->**For more information about `experiment.py` and my experiment findings, [click here](experiment.md).**
+>**For more information about `experiment.py` and my experimental findings, [click here](experiment.md).**
 
 # Setup
 ```bash
