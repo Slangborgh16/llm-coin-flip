@@ -13,13 +13,13 @@ The prompts were:
 - `Flip a random coin`
 - `Flip a weighted coin`
 
-In order to keep GPT from complaining about being unable to physically flip a coin,
-I found that using the system prompt `Reply with 1 word: heads or tails` usually fixes this.
+GPT likes to complan about being unable to physically flip a coin.
+I found that using the system prompt `Reply with 1 word: heads or tails` usually fixes this issue.
 This is the default system prompt of `coinflip.py`.
 
 However, GPT sometimes outputs random nonsense anyway,
 especially at higher temperatures (see image below).
-When this happens, the coin gets flipped again so that we get the desired number of trials.
+When this happens, the coin gets flipped again so that we still get the desired number of trials.
 The percentage of failed trials is reported as the "failure rate" once the program finishes.
 
 <p align="center">
@@ -46,6 +46,19 @@ A higher temperature seems to improve the randomness of the LLM output,
 but it also increases the failure rate. 
 Notably, the prompt `Flip a weighted coin` with a temperature of 1.5 had a failure rate of 20.19%.
 This means that an additional 253 trials had to be run to make up for the unusable data.
+
+# Discussion
+
+I find it interesting that asking GPT to flip a random coin makes the output even more biased.
+I'm not sure why this happens.
+When it comes to the high failure rates at high temperatures,
+maybe an improved system prompt would reduce the failure rate at the expense of using more tokens.
+
+An expansion of this experiment would be to let GPT see its previous output.
+Would it try to balance the number of heads and tails it outputs?
+With a large number of trials, including all previous output would likely exceed the context window of the model.
+Perhaps a better idea would be to send only the N most recent outputs.
+The value of N could be a new parameter to play around with, too.
 
 ---
 
