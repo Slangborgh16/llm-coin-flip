@@ -10,7 +10,7 @@ The program `coinflip.py` is a command line utility to flip a coin once or sever
 In `experiment.py`, I provide a tool to measure the results of a large series of coin flips.
 This program also shows the "failure rate", or the percentage of times GPT produced a non heads or tails output.
 Different combinations of prompts, temperatures, and models can easily be run.
-To learn about  my findings, [click here](experiment.md). 
+To learn about my findings or run your own experiment, [click here](experiment.md). 
 
 # Setup
 ```bash
@@ -57,11 +57,17 @@ Then run `source ~/.bashrc`.
 # Options
 |**Option**|**Description**|**Required**|
 |---|---|---|
-|-m, --model|[GPT model](https://platform.openai.com/docs/models/gpt-3-5) to use (Default: gpt-3.5-turbo)|No|
-|-t, --temperature|LLM temperature to use (Default: 1.5)|No|
+|-m MODEL, --model MODEL|[GPT model](https://platform.openai.com/docs/models/gpt-3-5) to use (Default: gpt-3.5-turbo)|No|
+|-t TEMPERATURE, --temperature TEMPERATURE|LLM temperature to use (Default: 1.5)|No|
 |-h, --help|Display the help message|No|
 
 # Usage Examples
+Run a single coin flip with all the default settings.
 ```bash
 python3 coinflip.py
+```
+
+Run 10 trials with `gpt-4` and a temperature of 1.1.
+```bash
+python3 coinflip.py -m gpt-4 -t 1.1 10
 ```
