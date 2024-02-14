@@ -58,7 +58,7 @@ Then run `source ~/.bashrc`.
 |**Option**|**Description**|**Required**|
 |---|---|---|
 |-m MODEL, --model MODEL|[GPT model](https://platform.openai.com/docs/models/gpt-3-5) to use (Default: gpt-3.5-turbo)|No|
-|-t TEMPERATURE, --temperature TEMPERATURE|LLM temperature to use (Default: 1.5)|No|
+|-t TEMP, --temperature TEMP|LLM temperature to use (Default: 1.5)|No|
 |-h, --help|Display the help message|No|
 
 # Usage Examples
