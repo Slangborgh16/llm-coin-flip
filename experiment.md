@@ -19,7 +19,9 @@ especially at higher temperatures (see image below).
 When this happens, the coin gets flipped again so that we get the desired number of trials.
 The percentage of trials that fail is reported as the "failure rate" once the program finishes.
 
-<img src="extras/nonsense_output.png" alt="Broken GPT output example" width="50%">
+<p align="center">
+    <img src="extras/nonsense_output.png" alt="Broken GPT output example" width="50%">
+</p>
 
 # Results
 
