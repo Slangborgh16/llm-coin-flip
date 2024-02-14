@@ -50,19 +50,21 @@ export OPENAI_API_KEY="YOUR_SECRET_KEY_GOES_HERE"
 ```
 Then run `source ~/.bashrc`.
 
-# Positional Arguments
+# Running
+
+## Positional Arguments
 |**Argument**|**Description**|**Required**|
 |---|---|---|
 |Trials|Number of coin flips to run (Default: 1)|No|
 
-# Options
+## Options
 |**Option**|**Description**|**Required**|
 |---|---|---|
 |-m MODEL, --model MODEL|[GPT model](https://platform.openai.com/docs/models/gpt-3-5) to use (Default: gpt-3.5-turbo)|No|
 |-t TEMP, --temperature TEMP|LLM temperature to use (Default: 1.5)|No|
 |-h, --help|Display the help message|No|
 
-# Usage Examples
+## Usage Examples
 Run a single coin flip with all the default settings.
 ```bash
 python3 coinflip.py
