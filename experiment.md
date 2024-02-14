@@ -96,3 +96,12 @@ Run 1000 trials using the default model, temperature, and prompt.
 ```bash
 python3 experiment.py 1000
 ```
+
+## Example Output
+```
+Model: gpt-3.5-turbo    Temperature: 1.5
+Prompt: "Flip a coin"   Trials: 1000
+----------------------------------------
+Trial: 1000     Heads: 636      Tails: 364
+Total trials (including fails): 1057    Failure rate: 5.39%
+```
